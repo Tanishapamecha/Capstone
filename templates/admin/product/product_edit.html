@@ -1,0 +1,73 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Product Tables </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Product Table</h4>
+              </p>
+              <div class="table-responsive">
+                <form action="/pro_updating/{{edit.p_id}}/" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Name:</label>
+                        <input type="text" class="form-control" value="{{edit.p_name}}" id="name" placeholder="Enter name" name="name">
+                    </div>
+
+                  <div class="mb-3 mt-3">
+                      <label for="details" class="form-label">Details:</label>
+                      <input type="text" class="form-control" value="{{ edit.p_detail }}" id="details" placeholder="Enter details" name="details">
+                    </div>
+                    
+                   
+                  
+
+                      <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">price:</label>
+                        <input type="number" class="form-control" value="{{edit.p_price}}" id="price" placeholder="Enter price" name="price">
+                      </div>
+
+                    <div class="mb-3">
+                      <label for="image" class="form-label">Image:</label>
+                      <input type="file" class="form-control" value="{{edit.p_image}}" id="image" placeholder="Enter Image" name="image">
+                    </div>
+
+                    <div class="dropdown">
+                      <label for=""style="font-size: large; color:#aaa;">wholesaler:</label>
+                      <select name="wholesaler" class="option">
+                        {% for ca1 in whole%}
+                        <option value="{{ca1.w_id}}">{{ca1.w_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+
+                    <div class="dropdown">
+                      <label for="category" style="font-size: large; color:#aaa;">Category:</label>
+                      <select id="category" name="category" class="option">
+                          {% for ca1 in cat %}
+                          <option value="{{ ca1.c_id }}">{{ ca1.c_name }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+
+                    <div class="form-check mb-3">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                      </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %}

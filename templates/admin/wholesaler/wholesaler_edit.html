@@ -1,0 +1,66 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+<!-- partial -->
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Wholesaler Tables </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Wholesaler Table</h4>
+                    </p>
+                    <div class="table-responsive">
+                        <form action="/whole_updating/{{ whole.w_id }}/" enctype="multipart/form-data" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3 mt-3">
+                                <label for="email" class="form-label">Name</label>
+                                <input type="text" value="{{ whole.w_name }}" class="form-control" id="name"
+                                    placeholder="Enter name" name="name">
+                            </div>
+
+
+                            <div class="mb-3 mt-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" value="{{ whole.w_email }}" class="form-control" id="email"
+                                    placeholder="Enter Detail" name="email">
+                            </div>s
+
+                            <div class="mb-3 mt-3">
+                                <label for="email" class="form-label">Password:</label>
+                                <input type="text" value="{{ whole.w_password }}" class="form-control" id="email"
+                                    placeholder="Enter Price" name="password">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="img" class="form-label">Image:</label>
+                                <img style="position: relative; height: 90px ; width: 90px; top: 2px; left: 6px;"
+                                    src="{{ whole.w_image }}" alt="">
+                                <input type="file" value="{{ whole.w_image }}" class="form-control" id="img"
+                                    placeholder="Enter Image" name="image">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="mobile" class="form-label">mobileno:</label>
+                                <input type="text" value="{{ whole.w_mobile_no }}" class="form-control" id="mobile"
+                                    placeholder="Enter Mobile" name="mobile">
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address:</label>
+                                <input type="text" value="{{ whole.w_address }}" class="form-control" id="address"
+                                    placeholder="Enter Address" name="address">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endblock 'content' %}

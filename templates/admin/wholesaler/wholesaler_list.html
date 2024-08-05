@@ -1,0 +1,56 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Wholesaler Tables </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-90 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              {% for messages in messages %}
+              <div class="alert alert-danger" role="alert">{{messages}}</div>
+              {% endfor %}
+              <h4 class="card-title">Wholesaler Table</h4>
+              {% comment %} <a href="{% url "wholesaler_add" %}" class="btn btn-success">Add </a> {% endcomment %}
+              </p>
+              <div class="table-responsive">
+                <table class="table ">   
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>email</th>
+                      <th>Password</th>
+                      <th>mobileno</th>
+                      <th>Address</th>
+                      <th>Image</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for cu in whole %}
+                    <tr>
+                      <td>{{cu.w_id}}</td>
+                      <td>{{cu.w_name}}</td>
+                      <td>{{cu.w_email}}</td>
+                      <td>{{cu.w_password}}</td>
+                      <td>{{cu.w_mobile_no}}</td>
+                      <td>{{cu.w_address}}</td>
+                      <td><img src="{{cu.w_image}}" style="height=300px width=500px"></td>
+                      <td><a href="/whole_deleting/{{cu.w_id}}/" class="btn btn-danger"> delete</a>
+                   {% comment %} <a href="/whole_updatepage/{{cu.w_id}}/" class="btn btn-success"> Edit</a></td>                       {% endcomment %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %}

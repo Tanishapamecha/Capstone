@@ -1,0 +1,16 @@
+<!-- cart_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart List</title>
+</head>
+<body>
+    <h1>Cart List</h1>
+    <ul>
+        {% for cart in carts %}
+            <li>{{ cart.cart_id }} - {{ cart.cust_id }} - {{ cart.p_id }} - {{ cart.cart_quantity }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

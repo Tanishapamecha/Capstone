@@ -1,0 +1,58 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Customer Tables </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-90 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Customer Table</h4>
+              <a href="{% url "customer_add" %}" class="btn btn-success">Add </a>
+              </p>
+              <div class="table-responsive">
+                <table class="table ">   
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Gender</th>
+                      <th>email</th>
+                      <th>Password</th>
+                      <th>mobileno</th>
+                      <th>Address line 1</th>
+                      <th>Address line 2</th>
+                      <th>Address line 3</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for cu in cust %}
+                    <tr>
+                      <td>{{cu.cust_id}}</td>
+                      <td>{{cu.cust_name}}</td>
+                      <td>{{cu.cust_gender}}</td>
+                      <td>{{cu.cust_email}}</td>
+                      <td>{{cu.cust_password}}</td>
+                      <td>{{cu.cust_mobileno}}</td>
+                      <td>{{cu.cust_addressline1}}</td>
+                      <td>{{cu.cust_addressline2}}</td>
+                      <td>{{cu.cust_addressline3}}</td>
+                      <td><a href="/deleting/{{cu.cust_id}}/" class="btn btn-danger"> delete</a></td>
+                      <td><a href="/updatepage/{{cu.cust_id}}/" class="btn btn-success"> Edit</a></td>
+                      
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %}

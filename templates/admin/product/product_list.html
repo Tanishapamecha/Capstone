@@ -1,0 +1,53 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Product Tables </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-90 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Product Table</h4>
+              <a href="{% url "product_add" %}" class="btn btn-success">Add </a>
+              </p>
+              <div class="table-responsive">
+                <table class="table ">   
+                  <thead>
+                    <tr>
+                      <th>product Id</th>
+                      <th>Name</th>
+                      <th>Detail</th>
+                      <th>Price</th>
+                      <th>Image</th>
+                      <th>category</th>
+                      <th>wholesaler</th>
+                      <th> option</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for cu in pro %}
+                    <tr>
+                      <td>{{cu.p_id}}</td>
+                      <td>{{cu.p_name}}</td>
+                      <td>{{cu.p_detail}}</td>
+                      <td>{{cu.p_price}}</td>
+                      <td><img src="{{cu.p_image}}" style="height=300px width=500px"></td>
+                      <td>{{cu.c}}</td>
+                      <td>{{cu.w}}</td>
+                      <td><a href="/pro_deleting/{{cu.p_id}}/" class="btn btn-danger"> delete</a>
+                      <a href="/pro_updatepage/{{cu.p_id}}/" class="btn btn-success"> Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %}

@@ -1,0 +1,49 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Feedback Table </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-90 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Feedback Table</h4>
+              {% comment %} <a href="{% url "product_add" %}" class="btn btn-success">Add </a> {% endcomment %}
+              </p>
+              <div class="table-responsive">
+                <table class="table ">   
+                  <thead>
+                    <tr>
+                      <th>Feedback Id</th>
+                      <th>Feedback Name</th>
+                      <th>Customer</th>
+                      <th>Product</th>
+                      <th>Order</th>         
+                      <th>Options</th>         
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for cu in feed %}
+                    <tr>
+                      <td>{{cu.f_id}}</td>
+                      <td>{{cu.f_name}}</td>
+                      <td>{{cu.cust}}</td>
+                      <td>{{cu.p.p_name }}</td>
+                      <td>{{cu.o.o_id}}</td>
+                      <td><a href="/feed_deleting/{{cu.f_id}}/" class="btn btn-danger"> delete</a></td>
+                      {% comment %} <td><a href="/feed_updatepage/{{cu.p_id}}/" class="btn btn-success"> Edit</a></td>                    {% endcomment %}
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %}

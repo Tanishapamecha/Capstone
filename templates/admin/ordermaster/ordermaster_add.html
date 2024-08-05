@@ -1,0 +1,59 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Order Master Tables </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Order Master Table</h4>
+              </p>
+              <div class="table-responsive">
+                <form action="/order_adding/" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="name" placeholder="Enter date" name="Date">
+                    </div>       
+                    <div class="dropdown">
+                        <label for=""style="font-size: large; color:#aaa;">Product:</label>
+                        <select name="product" class="option">
+                            {% for prio in prio%}
+                            <option value="{{prio.p_name}}">{{prio.p_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>                
+                    <div class="dropdown">
+                        <label for=""style="font-size: large; color:#aaa;">Customer:</label>
+                        <select name="customer" class="option">
+                            {% for cust in cust%}
+                            <option value="{{cust.cust_name}}">{{cust.cust_name}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>                
+                      <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Status</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter Status" name="Status">
+                      </div>                    
+                    <div class="mb-3">
+                      <label for="text" class="form-label">Quantity</label>
+                      <input type="number" class="form-control" id="text" placeholder="Enter Quantity" name="Quantity">
+                    </div>   
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="email" placeholder="Enter Price" name="Price">
+                      </div>  
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %}

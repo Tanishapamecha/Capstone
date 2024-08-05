@@ -1,0 +1,53 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Order master Tables </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-90 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Order master Table</h4>
+              {% comment %} <a href="{% url "ordermaster_add" %}" class="btn btn-success">Add </a> {% endcomment %}
+              </p>
+              <div class="table-responsive">
+                <table class="table ">   
+                  <thead>
+                    <tr>
+                      <th>order_ID</th>
+                      <th>Customer</th>
+                      <th>Product</th>
+                      <th>Date</th>
+                      <th>Quantity</th>
+                      <th>price</th>
+                      <th>status</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for cu in order %}
+                    <tr>
+                      <td>{{cu.o_id}}</td>
+                      <td>{{cu.cust}}</td>
+                      <td>{{cu.p}}</td>
+                      <td>{{cu.o_date}}</td>
+                      <td>{{cu.o_quantity}}</td>
+                      <td>{{cu.o_price}}</td>
+                      <td>{{cu.o_status}}</td>
+                      <td><a href="/order_deleting/{{cu.o_id}}/" class="btn btn-danger"> delete</a></td>
+                      <td><a href="/order_updatepage/{{cu.o_id}}/" class="btn btn-success"> Edit</a></td>                      
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %}

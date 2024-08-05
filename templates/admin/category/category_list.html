@@ -1,0 +1,46 @@
+{% extends "admin/master_index.html" %}
+{% load static %}
+{% block 'content' %}
+ <!-- partial -->
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Category Tables </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          </ol>
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-90 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Category Table</h4>
+              <a href="{% url "category_add" %}" class="btn btn-success">Add </a>
+              </p>
+              <div class="table-responsive">
+                <table class="table ">   
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>category name</th>
+                      <th>subcategory</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for cu in cat %}
+                    <tr>
+                      <td>{{cu.c_id}}</td>
+                      <td>{{cu.c_name}}</td>
+                      <td>{{cu.c_subcategory}}</td>
+                       <td><a href="/cat_deleting/{{cu.c_id}}/" class="btn btn-danger"> delete</a></td>
+                      <td><a href="/cat_updatepage/{{cu.c_id}}/" class="btn btn-success"> Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  {% endblock 'content' %} 
+
